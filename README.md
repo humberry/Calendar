@@ -6,12 +6,12 @@
 
 Show calendar events (for now).<br />
 <br />
-Left/Right to change the month<br />
-Month/Year to get back to the current month<br />
-...<br />
-...<br />
-...<br />
-...<br />
+left/right to change the month<br />
+month/year to get back to the current month<br />
+events:<br />
+start time or no time (all day)<br />
+color from event<br />
+fixed size<br />
 ...<br /><br />
 Use at your own risk :)<br />
 <br />
