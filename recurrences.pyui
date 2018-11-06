@@ -1,0 +1,379 @@
+[
+  {
+    "nodes" : [
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 6}, {265, 34}}",
+        "class" : "Slider",
+        "attributes" : {
+          "flex" : "W",
+          "continuous" : true,
+          "frame" : "{{91, 313}, {200, 34}}",
+          "uuid" : "6519AE1A-E3F7-4086-B086-8CD4F200F375",
+          "class" : "Slider",
+          "value" : 0,
+          "name" : "slFrequency"
+        },
+        "selected" : true
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 6}, {52, 34}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label1",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "796B6177-22A5-49AD-A9F0-51F31D0BC086",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "Every",
+          "font_size" : 18,
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{66, 6}, {37, 34}}",
+        "class" : "TextField",
+        "attributes" : {
+          "name" : "tfFrequency",
+          "frame" : "{{91, 314}, {200, 32}}",
+          "spellchecking_type" : "default",
+          "class" : "TextField",
+          "uuid" : "D02C011A-26CE-4A0A-B898-CEB48E6FA398",
+          "alignment" : "left",
+          "text" : "0",
+          "autocorrection_type" : "default",
+          "font_size" : 17,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 125}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{166, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "swMonth",
+          "uuid" : "89CF4B38-231C-40C8-B7D0-D95AA7E56D70"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 48}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label2",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "E59A0E16-46FE-4F35-B83C-73843F8969E7",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "day(s)",
+          "font_size" : 18,
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 164}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{166, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "swYear",
+          "uuid" : "57710433-E679-4AAA-8D16-F28FA4051A74"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 88}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label3",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "45420005-9319-48FB-85B9-F9739BA1102F",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "week(s)",
+          "font_size" : 18,
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 87}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{166, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "swWeek",
+          "uuid" : "A5E141F3-38BE-4CDB-8FE4-A8876764985B"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 125}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label4",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "4D98F23E-D0E2-44DC-99E4-5FCCD894D7B2",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "month(s)",
+          "font_size" : 18,
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 48}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{166, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "swDay",
+          "uuid" : "55E01D5F-1E7E-4EE1-9D00-6406C240E69D"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 165}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label5",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "0BC409B3-FABF-4A74-BD35-E09181A202B9",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "year(s)",
+          "font_size" : 18,
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 203}, {114, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label6",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "3EE0273E-BC70-480C-9915-425FB70E7308",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "Recurrences",
+          "font_size" : 18,
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{128, 205}, {248, 32}}",
+        "class" : "TextField",
+        "attributes" : {
+          "name" : "tfCount",
+          "frame" : "{{91, 314}, {200, 32}}",
+          "spellchecking_type" : "default",
+          "class" : "TextField",
+          "uuid" : "4C408A2D-3EC0-4428-B539-DD17417859CD",
+          "alignment" : "left",
+          "autocorrection_type" : "default",
+          "font_size" : 17,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{66, 245}, {310, 118}}",
+        "class" : "DatePicker",
+        "attributes" : {
+          "class" : "DatePicker",
+          "frame" : "{{31, 222}, {320, 216}}",
+          "name" : "dpEnd",
+          "mode" : 2,
+          "uuid" : "35323C3E-F142-4940-A29E-ECFB69A65753"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 245}, {52, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label7",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "80EF71AF-7659-4757-9701-21707C8A7665",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "End",
+          "font_size" : 18,
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 371}, {40, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label8",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "35862289-145D-492E-A49F-40CEA0FCD93B",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "Year",
+          "font_size" : 18,
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{54, 371}, {58, 32}}",
+        "class" : "TextField",
+        "attributes" : {
+          "name" : "tfYear",
+          "frame" : "{{91, 314}, {200, 32}}",
+          "spellchecking_type" : "default",
+          "class" : "TextField",
+          "uuid" : "BE7AA0A4-F66B-446A-87F3-2EE8CFFB9A22",
+          "alignment" : "left",
+          "text" : "",
+          "autocorrection_type" : "default",
+          "font_size" : 17,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{120, 371}, {256, 34}}",
+        "class" : "Slider",
+        "attributes" : {
+          "flex" : "W",
+          "continuous" : true,
+          "frame" : "{{91, 313}, {200, 34}}",
+          "uuid" : "F417203B-15BB-4C26-B9CF-06794969EA97",
+          "class" : "Slider",
+          "value" : 0,
+          "name" : "slYear"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 494}, {173, 75}}",
+        "class" : "Button",
+        "attributes" : {
+          "border_width" : 1,
+          "frame" : "{{151, 314}, {80, 32}}",
+          "tint_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "title" : "Okay",
+          "uuid" : "FD436A77-89B9-4B3C-89E6-0CDD5340A2F9",
+          "class" : "Button",
+          "corner_radius" : 6,
+          "border_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "font_bold" : true,
+          "name" : "btnOkay",
+          "font_size" : 26
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{203, 494}, {173, 75}}",
+        "class" : "Button",
+        "attributes" : {
+          "border_width" : 1,
+          "frame" : "{{151, 314}, {80, 32}}",
+          "tint_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "title" : "Cancel",
+          "uuid" : "032B5971-75ED-4F48-B02D-2945C3C3A21C",
+          "class" : "Button",
+          "corner_radius" : 6,
+          "border_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "font_bold" : true,
+          "name" : "btnCancel",
+          "font_size" : 26
+        },
+        "selected" : false
+      }
+    ],
+    "frame" : "{{0, 0}, {382, 660}}",
+    "class" : "View",
+    "attributes" : {
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "enabled" : true,
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "name" : "Recurrences",
+      "flex" : ""
+    },
+    "selected" : false
+  }
+]
