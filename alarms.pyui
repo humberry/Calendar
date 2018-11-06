@@ -1,0 +1,318 @@
+[
+  {
+    "nodes" : [
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 455}, {173, 75}}",
+        "class" : "Button",
+        "attributes" : {
+          "border_width" : 1,
+          "frame" : "{{151, 314}, {80, 32}}",
+          "tint_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "title" : "Okay",
+          "uuid" : "E7C3CB2C-0F4D-49C7-BD51-D5927EB449DB",
+          "class" : "Button",
+          "font_bold" : true,
+          "border_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "corner_radius" : 6,
+          "name" : "btnOkay",
+          "font_size" : 26
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{220, 455}, {161, 78}}",
+        "class" : "Button",
+        "attributes" : {
+          "border_width" : 1,
+          "frame" : "{{151, 314}, {80, 32}}",
+          "tint_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "title" : "Cancel",
+          "uuid" : "4D829524-AC2E-4749-AE82-C4A905916CBC",
+          "class" : "Button",
+          "font_bold" : true,
+          "border_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "corner_radius" : 6,
+          "name" : "btnCancel",
+          "font_size" : 26
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 318}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{165, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "sw1day",
+          "uuid" : "26AB7A12-1083-4B50-ABB0-72383C1E41A1"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 84}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 18,
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "7B80D103-63A5-44E8-8AD4-CBF7E60D5C7C",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "0 min",
+          "name" : "label2",
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 84}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{165, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "sw0min",
+          "uuid" : "D7EB83AA-A272-41E9-9E2F-4C35C5514CF5"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 122}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 18,
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "178AF994-B361-4F9E-8985-B325BCEDDA8B",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "5 min",
+          "name" : "label3",
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 123}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{165, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "sw5min",
+          "uuid" : "A668ED6C-D9C0-4C62-A20D-D06C10DFC5D7"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 162}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 18,
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "7163025A-DBF7-49AF-871F-FB35CD9C3241",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "15 min",
+          "name" : "label4",
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 162}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{165, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "sw15min",
+          "uuid" : "85280021-C717-4077-AD21-F60CF67D8EE9"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 201}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 18,
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "B2241C65-F1AE-42B8-914E-0AA707D50899",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "30 min",
+          "name" : "label5",
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 201}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{165, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "sw30min",
+          "uuid" : "5EFE7991-B8E9-441B-8999-F263EA8A399A"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 240}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 18,
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "A4371434-270C-44B7-B8B6-C5AA7CBFC1D9",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "1 hour",
+          "name" : "label6",
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 240}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{165, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "sw1hour",
+          "uuid" : "EF660E17-C6E5-419A-9467-B5E5CA07A480"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 279}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 18,
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "74E80202-A604-45F0-AAFC-13570E86FD9F",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "2 hours",
+          "name" : "label7",
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 279}, {51, 31}}",
+        "class" : "Switch",
+        "attributes" : {
+          "frame" : "{{165, 315}, {51, 31}}",
+          "value" : false,
+          "class" : "Switch",
+          "name" : "sw2hours",
+          "uuid" : "F6F65919-C365-4EA1-A5F6-26D95EFF3220"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{170, 318}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 18,
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "C6F00CC3-4E29-495E-85B1-B2F79E8F3E2C",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "1 day",
+          "name" : "label8",
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{111, 381}, {209, 32}}",
+        "class" : "Button",
+        "attributes" : {
+          "border_width" : 1,
+          "frame" : "{{151, 314}, {80, 32}}",
+          "tint_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "title" : "Reset Alarms",
+          "uuid" : "0A86C330-829C-44FE-82EE-00F25DABF91B",
+          "class" : "Button",
+          "font_bold" : true,
+          "border_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "corner_radius" : 6,
+          "name" : "btnNoAlarms",
+          "font_size" : 26
+        },
+        "selected" : true
+      }
+    ],
+    "frame" : "{{0, 0}, {381, 660}}",
+    "class" : "View",
+    "attributes" : {
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "enabled" : true,
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "name" : "Alarms",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "flex" : ""
+    },
+    "selected" : false
+  }
+]
