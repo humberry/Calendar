@@ -313,9 +313,6 @@ class Calendarapp(ui.View):
 
   def btnRecurrences_click(self, sender):
     self.viewR = ui.load_view('recurrences')
-    self.viewR['tfYear'].text = str(self.year)
-    self.viewR['tfYear'].action = self.tfYear_click
-    self.viewR['slYear'].action = self.slYear_click
     self.viewR['slFrequency'].action = self.slFrequency_click
     self.viewR['tfFrequency'].action = self.tfFrequency_click
     self.viewR['swDay'].action = self.swDay_click
@@ -324,6 +321,11 @@ class Calendarapp(ui.View):
     self.viewR['swYear'].action = self.swYear_click
     self.viewR['btnOkay'].action = self.btnOkayR_click
     self.viewR['btnCancel'].action = self.btnCancel_click
+    self.viewR['dpEnd'].action = self.dpEndChange
+    self.viewR['dpYear'].action = self.dpYearChange
+    self.viewR['dpEnd'].background_color = 'white'
+    self.viewR['dpEnd'].bring_to_front()
+    
     if self.newEvent:
       self.recurrences = []
     if len(self.recurrences) > 0:
@@ -334,8 +336,7 @@ class Calendarapp(ui.View):
         self.viewR['tfCount'].text = str(count_date)
       else:
         self.viewR['dpEnd'].date = count_date
-        self.viewR['tfYear'].text = str(count_date)[:4]
-        self.viewR['slYear'].value = (int(self.viewR['tfYear'].text) - datetime.datetime.now().year)/10
+        self.viewR['dpYear'].date = count_date
       self.viewR['tfFrequency'].text = str(interval)
       self.viewR['slFrequency'].value = int(str(interval))/31
       if int(str(frequency)) == 0:
@@ -347,6 +348,15 @@ class Calendarapp(ui.View):
       elif int(str(frequency)) == 3:
         self.viewR['swYear'].value = True
     self.viewR.present('fullscreen')
+
+  def dpEndChange(self, sender):
+    self.viewR['dpYear'].date = self.viewR['dpEnd'].date  #keep year sync
+    
+  def dpYearChange(self, sender):
+    enddate = self.viewR['dpEnd'].date
+    endyear = self.viewR['dpYear'].date.year
+    enddate = enddate.replace(year=endyear)  #replace only year
+    self.viewR['dpEnd'].date = enddate
 
   def btnAlarms_click(self, sender):
     self.viewA = ui.load_view('alarms')
@@ -556,20 +566,6 @@ class Calendarapp(ui.View):
     else:
       self.viewE['sv']['btnAlarms'].tint_color = 'blue'
     self.viewA.close()
-
-  def slYear_click(self, sender):
-    value = int(sender.value * 10)
-    self.viewR['tfYear'].text = str(self.year + value)
-    changeYear = time.strptime(str(self.year + value) + '-01-01 00:00:00', '%Y-%m-%d %H:%M:%S')
-    changeYear = datetime.datetime(*changeYear[:6])  #convert in datetime
-    self.viewR['dpEnd'].date = changeYear
-
-  def tfYear_click(self, sender):
-    value = int(self.viewR['tfYear'].text)
-    if value >= 2000 and value <= 2100:
-      changeYear = time.strptime(str(value) + '-01-01 00:00:00', '%Y-%m-%d %H:%M:%S')
-      changeYear = datetime.datetime(*changeYear[:6])  #convert in datetime
-      self.viewR['dpEnd'].date = changeYear
 
   def slFrequency_click(self, sender):
     value = int(sender.value / (1/31))
