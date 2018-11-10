@@ -23,4 +23,4 @@ if you edit an alarm or recurrence from another app, all entries (which does not
 <br />
 Use at your own risk :)<br />
 <br />
-![](calendar.png)
+![](calendarapp.png)
