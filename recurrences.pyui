@@ -16,7 +16,7 @@
           "value" : 0,
           "name" : "slFrequency"
         },
-        "selected" : true
+        "selected" : false
       },
       {
         "nodes" : [
@@ -197,7 +197,7 @@
         "nodes" : [
 
         ],
-        "frame" : "{{6, 203}, {114, 32}}",
+        "frame" : "{{6, 216}, {114, 32}}",
         "class" : "Label",
         "attributes" : {
           "name" : "label6",
@@ -216,7 +216,7 @@
         "nodes" : [
 
         ],
-        "frame" : "{{128, 205}, {248, 32}}",
+        "frame" : "{{128, 216}, {248, 32}}",
         "class" : "TextField",
         "attributes" : {
           "name" : "tfCount",
@@ -235,89 +235,14 @@
         "nodes" : [
 
         ],
-        "frame" : "{{66, 245}, {310, 118}}",
+        "frame" : "{{6, 309}, {250, 150}}",
         "class" : "DatePicker",
         "attributes" : {
-          "class" : "DatePicker",
-          "frame" : "{{31, 222}, {320, 216}}",
           "name" : "dpEnd",
+          "frame" : "{{31, 222}, {320, 216}}",
+          "class" : "DatePicker",
           "mode" : 2,
           "uuid" : "35323C3E-F142-4940-A29E-ECFB69A65753"
-        },
-        "selected" : false
-      },
-      {
-        "nodes" : [
-
-        ],
-        "frame" : "{{6, 245}, {52, 32}}",
-        "class" : "Label",
-        "attributes" : {
-          "name" : "label7",
-          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
-          "frame" : "{{116, 314}, {150, 32}}",
-          "uuid" : "80EF71AF-7659-4757-9701-21707C8A7665",
-          "class" : "Label",
-          "alignment" : "left",
-          "text" : "End",
-          "font_size" : 18,
-          "font_name" : "<System-Bold>"
-        },
-        "selected" : false
-      },
-      {
-        "nodes" : [
-
-        ],
-        "frame" : "{{6, 371}, {40, 32}}",
-        "class" : "Label",
-        "attributes" : {
-          "name" : "label8",
-          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
-          "frame" : "{{116, 314}, {150, 32}}",
-          "uuid" : "35862289-145D-492E-A49F-40CEA0FCD93B",
-          "class" : "Label",
-          "alignment" : "left",
-          "text" : "Year",
-          "font_size" : 18,
-          "font_name" : "<System-Bold>"
-        },
-        "selected" : false
-      },
-      {
-        "nodes" : [
-
-        ],
-        "frame" : "{{54, 371}, {58, 32}}",
-        "class" : "TextField",
-        "attributes" : {
-          "name" : "tfYear",
-          "frame" : "{{91, 314}, {200, 32}}",
-          "spellchecking_type" : "default",
-          "class" : "TextField",
-          "uuid" : "BE7AA0A4-F66B-446A-87F3-2EE8CFFB9A22",
-          "alignment" : "left",
-          "text" : "",
-          "autocorrection_type" : "default",
-          "font_size" : 17,
-          "font_name" : "<System>"
-        },
-        "selected" : false
-      },
-      {
-        "nodes" : [
-
-        ],
-        "frame" : "{{120, 371}, {256, 34}}",
-        "class" : "Slider",
-        "attributes" : {
-          "flex" : "W",
-          "continuous" : true,
-          "frame" : "{{91, 313}, {200, 34}}",
-          "uuid" : "F417203B-15BB-4C26-B9CF-06794969EA97",
-          "class" : "Slider",
-          "value" : 0,
-          "name" : "slYear"
         },
         "selected" : false
       },
@@ -362,16 +287,80 @@
           "font_size" : 26
         },
         "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 203}, {370, 3}}",
+        "class" : "View",
+        "attributes" : {
+          "frame" : "{{141, 280}, {100, 100}}",
+          "background_color" : "RGBA(0.000000,0.666667,1.000000,1.000000)",
+          "class" : "View",
+          "name" : "view1",
+          "uuid" : "D0318112-2BB2-468F-8FB2-F9E1739D2924"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 256}, {370, 3}}",
+        "class" : "View",
+        "attributes" : {
+          "frame" : "{{141, 280}, {100, 100}}",
+          "background_color" : "RGBA(0.000000,0.666667,1.000000,1.000000)",
+          "class" : "View",
+          "name" : "view2",
+          "uuid" : "DCA390C4-FC28-4376-B224-13BE1024B268"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 269}, {114, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label7",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{116, 314}, {150, 32}}",
+          "uuid" : "A7F929E4-BE81-417D-83EE-686772399042",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "End",
+          "font_size" : 18,
+          "font_name" : "<System-Bold>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{26, 309}, {350, 150}}",
+        "class" : "DatePicker",
+        "attributes" : {
+          "mode" : 1,
+          "frame" : "{{31, 222}, {320, 216}}",
+          "name" : "dpYear",
+          "class" : "DatePicker",
+          "uuid" : "6D6FE3E5-6402-46D4-B2E7-9ACDB78AD89A"
+        },
+        "selected" : false
       }
     ],
     "frame" : "{{0, 0}, {382, 660}}",
     "class" : "View",
     "attributes" : {
-      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
-      "enabled" : true,
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "name" : "Recurrences",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "flex" : ""
     },
     "selected" : false
