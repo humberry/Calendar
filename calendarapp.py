@@ -19,12 +19,8 @@ class CalendarEvents(object):
     self.store.requestAccessToEntityType_completion_(0, completion_block)
     access_granted.wait()
 
-  def getEvents(self, start, end):
-    startDate = ObjCClass('NSDate').dateWithTimeIntervalSince1970_(time.mktime(time.strptime(start, '%Y-%m-%d %H:%M:%S')))
-    endDate = ObjCClass('NSDate').dateWithTimeIntervalSince1970_(time.mktime(time.strptime(end, '%Y-%m-%d %H:%M:%S')))
-
-    predicate = self.store.predicateForEventsWithStartDate_endDate_calendars_(startDate, endDate, None)
-    events = self.store.eventsMatchingPredicate_(predicate)
+  def getTableViewList(self, start, end):
+    events = self.getEvents(start, end)
 
     list = []
     for event in events:
@@ -39,26 +35,21 @@ class CalendarEvents(object):
         color = temp[i+8:i+15]
 
       #start = time.strptime('2018-12-31 23:59:59', '%Y-%m-%d %H:%M:%S')
-      start, end = self.convertDate(start, end)
+      start = self.convertDateWithOffset(start)
+      end = self.convertDateWithOffset(end)
       list.append([allday, start, end, title, color])
     return list
 
-  def convertDate(self, start, end):
-    start = time.strptime(start, '%Y-%m-%d %H:%M:%S')
-    end = time.strptime(end, '%Y-%m-%d %H:%M:%S')
-    dsts = time.localtime(time.mktime(start)).tm_isdst #1=y 0=n
-    dste = time.localtime(time.mktime(end)).tm_isdst #1=y 0=n
-    offsets = (time.timezone / -3600) if (dsts == 0) else (time.altzone / -3600) # timeoffset incl. daylight saving
-    offsete = (time.timezone / -3600) if (dste == 0) else (time.altzone / -3600) # timeoffset incl. daylight saving
-    start = datetime.datetime(*start[:6])
-    end = datetime.datetime(*end[:6])
-    offsets = datetime.timedelta(hours=offsets)
-    offsete = datetime.timedelta(hours=offsete)
-    start += offsets
-    end += offsete
-    return [start, end]
+  def convertDateWithOffset(self, date):
+    date = time.strptime(date, '%Y-%m-%d %H:%M:%S')
+    dst = time.localtime(time.mktime(date)).tm_isdst #1=y 0=n
+    offset = (time.timezone / -3600) if (dst == 0) else (time.altzone / -3600) # timeoffset incl. daylight saving
+    date = datetime.datetime(*date[:6])
+    offset = datetime.timedelta(hours=offset)
+    date += offset
+    return date
 
-  def getDetailedEvents(self, start, end):
+  def getEvents(self, start, end):
     startDate = ObjCClass('NSDate').dateWithTimeIntervalSince1970_(time.mktime(time.strptime(start, '%Y-%m-%d %H:%M:%S')))
     endDate = ObjCClass('NSDate').dateWithTimeIntervalSince1970_(time.mktime(time.strptime(end, '%Y-%m-%d %H:%M:%S')))
 
@@ -174,13 +165,13 @@ class Calendarapp(ui.View):
       weekday += 1
       if weekday > 6:
         weekday = 0
-    ev = self.CE.getEvents(str(self.year) + '-' + str(self.month) + '-01 00:00:01', str(self.year) + '-' + str(self.month) + '-' + str(self.last_day) + ' 23:59:59')
+    ev = self.CE.getTableViewList(str(self.year) + '-' + str(self.month) + '-01 00:00:00', str(self.year) + '-' + str(self.month) + '-' + str(self.last_day) + ' 23:59:59')
     for e in ev:
       #list.append([allday, start, end, title, color])
 
-      if (e[0] == '1' and str(e[1])[:10] == str(e[2])[:10]):
-        self.events[int(str(e[1])[8:10])-1].append([e[3], e[4]])  #all day (no time) and start day == end day
-      elif (e[0] == '0' and str(e[1])[:10] == str(e[2])[:10]):  # timespan and start day == end day
+      if (e[0] == '1' and str(e[1])[:10] == str(e[2])[:10]):  #all day AND start day == end day
+        self.events[int(str(e[1])[8:10])-1].append([e[3], e[4]])  
+      elif (e[0] == '0' and str(e[1])[:10] == str(e[2])[:10]):  # timespan AND start day == end day
         self.events[int(str(e[1])[8:10])-1].append([str(e[1].time())[:5] + ' ' + e[3], e[4]])
       elif (str(e[1])[:10] != str(e[2])[:10]):  # start day != end day
         first = time.strptime(str(self.year) + '-' + str(self.month) + '-01 00:00:00', '%Y-%m-%d %H:%M:%S')
@@ -197,7 +188,7 @@ class Calendarapp(ui.View):
           if e[0] == '1': #all day (no time)
             self.events[i].append([e[3], e[4]])  #[title, color]
           else:   #timespan
-            self.events[i].append([str(e[1])[:5] + ' ' + e[3], e[4]])  #[start time + title, color]
+            self.events[i].append([str(e[1])[11:16] + ' ' + e[3], e[4]])  #[start time + title, color]
     self.tv.data_source.items = self.events
     self.tv.reload()
 
@@ -231,11 +222,14 @@ class Calendarapp(ui.View):
     self.viewE['sv']['btnRecurrences'].action = self.btnRecurrences_click
     self.viewE['sv']['btnAlarms'].action = self.btnAlarms_click
     self.viewE['sv']['swAllday'].action = self.swAllday_click
+    self.recurrences = []
+    self.alarms = []
 
     if text == 'NEW':
       self.newEvent = True
       self.viewE['sv']['btnRemove'].enabled = False
-      currentTime = str(time.localtime().tm_hour) + ':' + str(time.localtime().tm_min) + ':' + str(time.localtime().tm_sec)
+      #currentTime = str(time.localtime().tm_hour) + ':' + str(time.localtime().tm_min) + ':' + str(time.localtime().tm_sec)
+      currentTime = str(time.localtime().tm_hour) + ':00:00'
       selectedDate = time.strptime(str(self.year) + '-' + str(self.month) + '-' + str(row+1) + ' ' + currentTime, '%Y-%m-%d %H:%M:%S')
       selectedDate = datetime.datetime(*selectedDate[:6])  #convert in datetime
       self.viewE['sv']['dpStart'].date = selectedDate
@@ -248,7 +242,7 @@ class Calendarapp(ui.View):
         text = text[6:]
       start = str(self.year) + '-' + str(self.month) + '-' + str(row+1) + ' 00:00:00'
       end = str(self.year) + '-' + str(self.month) + '-' + str(row+1) + ' 23:59:59'
-      self.detailedEvents = self.CE.getDetailedEvents(start, end)
+      self.detailedEvents = self.CE.getEvents(start, end)
       if len(self.detailedEvents) > 1:
         self.viewE['sv']['btnNext'].enabled = True
         self.viewE.eventcount = len(self.detailedEvents)
@@ -262,7 +256,8 @@ class Calendarapp(ui.View):
           allday = str(self.detailedEvents[i].valueForKey_('allDay'))
           start = str(self.detailedEvents[i].valueForKey_('startDate'))[:19]
           end = str(self.detailedEvents[i].valueForKey_('endDate'))[:19]
-          start, end = self.CE.convertDate(start, end)
+          start = self.CE.convertDateWithOffset(start)
+          end = self.CE.convertDateWithOffset(end)
           if self.detailedEvents[i].hasRecurrenceRules():
             self.viewE['sv']['btnRecurrences'].tint_color = 'red'
             recurrences = self.detailedEvents[i].valueForKey_('recurrenceRule')
@@ -282,7 +277,6 @@ class Calendarapp(ui.View):
             else:
               self.recurrences = [frequency, interval, count]
           else:
-            self.recurrences = []
             self.viewE['sv']['btnRecurrences'].tint_color = 'blue'
           alarms = self.detailedEvents[i].valueForKey_('alarms') # list of objects EKAlarm
           if alarms != None:
@@ -291,7 +285,6 @@ class Calendarapp(ui.View):
               self.alarms.append(int(alarm.relativeOffset()))
           else:
             self.viewE['sv']['btnAlarms'].tint_color = 'blue'
-            self.alarms = []
           #color = None
           #temp = str(self.detailedEvents[i].valueForKey_('calendar'))
           #if 'color' in temp:
@@ -383,18 +376,9 @@ class Calendarapp(ui.View):
     span = 0
     event = None
     if self.newEvent:
-      #new event
       event = ObjCClass('EKEvent').eventWithEventStore_(self.CE.store)
-      recurrenceRule = ObjCClass('EKRecurrenceRule').alloc()
-      if type(self.recurrences[2]) == int:
-        end = ObjCClass('EKRecurrenceEnd').recurrenceEndWithOccurrenceCount_(self.recurrences[2])
-      else:
-        endDate = ObjCClass('NSDate').dateWithTimeIntervalSince1970_(time.mktime(time.strptime(str(self.recurrences[2]), '%Y-%m-%d %H:%M:%S')))
-        end = ObjCClass('EKRecurrenceEnd').recurrenceEndWithEndDate_(endDate)
-      recurrenceRule.initRecurrenceWithFrequency_interval_end_(self.recurrences[0],self.recurrences[1],end)
-      event.addRecurrenceRule_(recurrenceRule)
-      choice = console.alert('Event is recurrent', 'Modify this instance only?', 'Yes', 'No', hide_cancel_button=True) #yes=1, no=2, cancel=?
-      if choice == 2:
+      if len(self.recurrences) > 0:  #remove recurrences
+        event = self.addRecurrenceRule(event)
         span = 1
 
       if len(self.alarms) > 0:
@@ -402,30 +386,18 @@ class Calendarapp(ui.View):
           a = ObjCClass('EKAlarm').alarmWithRelativeOffset_(alarm)
           event.addAlarm_(a)
           
-    else:
-      #change an event
+    else:  #change an event
       event = self.detailedEvents[self.viewE.eventnumber]
-      #if recurrence: only this event (span=0) / future events (span=1)
-      if len(self.recurrences) > 0:
-        #remove recurrences
+      if len(self.recurrences) > 0:  #remove recurrences
         if event.hasRecurrenceRules():
           recurrenceRule = event.valueForKey_('recurrenceRule')
           event.removeRecurrenceRule(recurrenceRule)
-        recurrenceRule = ObjCClass('EKRecurrenceRule').alloc()
-        #count or date?
-        if type(self.recurrences[2]) == int:
-          end = ObjCClass('EKRecurrenceEnd').recurrenceEndWithOccurrenceCount_(self.recurrences[2])
-        else:
-          endDate = ObjCClass('NSDate').dateWithTimeIntervalSince1970_(time.mktime(time.strptime(str(self.recurrences[2]), '%Y-%m-%d %H:%M:%S')))
-          end = ObjCClass('EKRecurrenceEnd').recurrenceEndWithEndDate_(endDate)
-        recurrenceRule.initRecurrenceWithFrequency_interval_end_(int(str(self.recurrences[0])),int(str(self.recurrences[1])),end)
-        event.addRecurrenceRule_(recurrenceRule)
+        event = self.addRecurrenceRule(event)
 
         choice = console.alert('Event is recurrent', 'Modify this instance only?', 'Yes', 'No', hide_cancel_button=True) #yes=1, no=2, cancel=?
         if choice == 2:
           span = 1
-      else:
-        #remove recurrences
+      else:  #remove recurrences
         if len(self.recurrences) == 0:
           if event.hasRecurrenceRules():
             recurrenceRule = self.detailedEvents[self.viewE.eventnumber].valueForKey_('recurrenceRule')
@@ -434,8 +406,7 @@ class Calendarapp(ui.View):
             if choice == 2:
               span = 1
 
-      #add alarms
-      if len(self.alarms) > 0:
+      if len(self.alarms) > 0:  #add alarms
         if event.hasAlarms():
           alarms = event.valueForKey_('alarms')
           for alarm in alarms:
@@ -444,8 +415,7 @@ class Calendarapp(ui.View):
           a = ObjCClass('EKAlarm').alarmWithRelativeOffset_(alarm)
           event.addAlarm_(a)
           
-      #remove all alarms
-      else:
+      else:  #remove all alarms
         if event.hasAlarms():
           alarms = event.valueForKey_('alarms') # list of objects EKAlarm
           for alarm in alarms:
@@ -462,10 +432,24 @@ class Calendarapp(ui.View):
     event.setCalendar_(self.CE.store.defaultCalendarForNewEvents())
     LP_c_void_p = POINTER(c_void_p)
     err = LP_c_void_p()
-  
+    #recurrence: only this event (span=0) / future events (span=1)
     self.CE.store.saveEvent_span_error_(event, span, err)
     self.fill_events()
     self.viewE.close()
+    
+  def addRecurrenceRule(self, event):
+    recurrenceRule = ObjCClass('EKRecurrenceRule').alloc()
+    if type(self.recurrences[2]) == int:  #count
+      if self.viewE['sv']['swAllday'].value == True:
+        end = ObjCClass('EKRecurrenceEnd').recurrenceEndWithOccurrenceCount_(self.recurrences[2]+1)
+      else:
+        end = ObjCClass('EKRecurrenceEnd').recurrenceEndWithOccurrenceCount_(self.recurrences[2])
+    else:  #date
+      endDate = ObjCClass('NSDate').dateWithTimeIntervalSince1970_(time.mktime(time.strptime(str(self.recurrences[2])[:20], '%Y-%m-%d %H:%M:%S')))
+      end = ObjCClass('EKRecurrenceEnd').recurrenceEndWithEndDate_(endDate)
+    recurrenceRule.initRecurrenceWithFrequency_interval_end_(int(str(self.recurrences[0])),int(str(self.recurrences[1])),end)
+    event.addRecurrenceRule_(recurrenceRule)
+    return event
 
   def btnCancel_click(self, sender):
     if sender.superview == self.viewE['sv']:
@@ -475,18 +459,15 @@ class Calendarapp(ui.View):
 
   @ui.in_background
   def btnRemove_click(self, sender):
+    span = 0
     event = self.detailedEvents[self.viewE.eventnumber]
     LP_c_void_p = POINTER(c_void_p)
     err = LP_c_void_p()
     if event.hasRecurrenceRules():
-      #choice: only this event (span=0) / future events (span=1)
       choice = console.alert('Event is recurrent', 'Modify this instance only?', 'Yes', 'No', hide_cancel_button=True) #yes=1, no=2, cancel=?
-      if choice == 1:
-        span = 0
-      else:
+      if choice == 2:
         span = 1
-    else:
-      span = 0
+    #only this event (span=0) / future events (span=1)
     self.CE.store.removeEvent_span_error_(event, span, err)
     self.fill_events()
     self.viewE.close()
@@ -502,7 +483,8 @@ class Calendarapp(ui.View):
     allday = str(self.detailedEvents[i].valueForKey_('allDay'))
     start = str(self.detailedEvents[i].valueForKey_('startDate'))[:19]
     end = str(self.detailedEvents[i].valueForKey_('endDate'))[:19]
-    start, end = self.CE.convertDate(start, end)
+    start = self.CE.convertDateWithOffset(start)
+    end = self.CE.convertDateWithOffset(end)
     if self.detailedEvents[i].hasRecurrenceRules():
       self.viewE['sv']['btnRecurrences'].tint_color = 'red'
       recurrences = self.detailedEvents[i].valueForKey_('recurrenceRule')
